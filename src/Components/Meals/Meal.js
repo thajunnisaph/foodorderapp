@@ -6,6 +6,7 @@ const Meal = () =>{
     <Fragment>
         <MealsSummary />
         <AvailableMeals />
+        
     </Fragment>
   )
 }
