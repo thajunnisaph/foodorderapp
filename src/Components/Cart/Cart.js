@@ -8,7 +8,7 @@ const cartitem =[ {
 ];
 const Cart = (props) => {
   return (
-    <Modal>
+    <Modal backdropClose={props.onCloseCart}>
       <ul className={classes.cartitems}>
         {cartitem.map((item) => {
           return <li key={item.id}>{item.name}</li>;
@@ -19,7 +19,7 @@ const Cart = (props) => {
         <span>35.34</span>
       </div>
       <div className={classes.actions}>
-        <button className={classes['button--alt']}>Close</button>
+        <button className={classes['button--alt']} onClick={props.onCloseCart}>Close</button>
         <button className={classes.button}>Order</button>
       </div>
     </Modal>
