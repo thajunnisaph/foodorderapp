@@ -1,22 +1,30 @@
 import classes from "./Cart.module.css";
-import React from 'react';
+import React,{useContext} from 'react';
 import Modal from "../UI/Modal";
-const cartitem =[ {
-  id: 1,
-  name: "sushi",
-}
-];
+import CartItem from "./CartItem";
+import cartContext from "../../store/cart-context";
+// const cartitem =[ {
+//   id: 1,
+//   name: "sushi",
+// }
+// ];
 const Cart = (props) => {
+  const cartitem =useContext(cartContext);
+  let totalamnt= 0;
+  cartitem.items.forEach((item) =>{
+    totalamnt= totalamnt+Number([item.Quantity*item.price]);
+  }) 
+  totalamnt = totalamnt.toFixed(2); 
   return (
     <Modal backdropClose={props.onCloseCart}>
       <ul className={classes.cartitems}>
-        {cartitem.map((item) => {
-          return <li key={item.id}>{item.name}</li>;
+        {cartitem.items.map((item) => {
+          return <CartItem key={item.id} name={item.name} price={item.price} quantity={item.Quantity} ></CartItem>
         })}
       </ul>
       <div className={classes.total}>
         <span>Total Amount</span>
-        <span>35.34</span>
+        <span>{totalamnt}</span>
       </div>
       <div className={classes.actions}>
         <button className={classes['button--alt']} onClick={props.onCloseCart}>Close</button>
