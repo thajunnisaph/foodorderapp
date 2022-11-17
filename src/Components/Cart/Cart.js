@@ -12,14 +12,14 @@ const Cart = (props) => {
   const cartitem =useContext(cartContext);
   let totalamnt= 0;
   cartitem.items.forEach((item) =>{
-    totalamnt= totalamnt+Number([item.Quantity*item.price]);
+    totalamnt= totalamnt+ item.Quantity*item.price;
   }) 
   totalamnt = totalamnt.toFixed(2); 
   return (
     <Modal backdropClose={props.onCloseCart}>
       <ul className={classes.cartitems}>
         {cartitem.items.map((item) => {
-          return <CartItem key={item.id} name={item.name} price={item.price} quantity={item.Quantity} ></CartItem>
+          return <CartItem key={item.id} id={item.id} name={item.name} price={item.price} quantity={item.Quantity} ></CartItem>
         })}
       </ul>
       <div className={classes.total}>

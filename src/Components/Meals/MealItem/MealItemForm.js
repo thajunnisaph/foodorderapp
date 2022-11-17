@@ -7,7 +7,7 @@ const MealItemForm = (props) =>{
     const addItemtoCart = (event)=>{
     event.preventDefault();
     const quantity= document.getElementById('quantity'+ props.id).value;
-    cntx1.addItem({...props.item,Quantity:quantity});
+    cntx1.addItem({...props.item,Quantity:Number(quantity)});
     
     }
 return(
