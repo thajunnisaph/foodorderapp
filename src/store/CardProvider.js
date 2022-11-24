@@ -24,9 +24,24 @@ const CardProvider = (props) => {
       item.id ===id ? itemreducer:item);
       SetItems(newupdatedquantity);
       }
+      else if(itemreducer.Quantity ===1){
+        alert('Are you sure? you want to remove from Cart');
+        const otheritem= Items.filter((item)=>item.id !== itemreducer.id)
+        SetItems(otheritem);
+      }
     }
-    const increasecartquantity =() =>{
-
+    
+    const increasecartquantity =(id) =>{
+      const cartitem = [...Items];
+      const itemindex=cartitem.findIndex((item)=> item.id===id);
+      console.log(itemindex);
+      cartitem[itemindex].Quantity++;
+      SetItems(cartitem);
+      // const itemincrease= Items.find((item) => item.id===id);
+      // itemincrease.Quantity++;
+      // const newupdatedincreaseqnty=Items.map((item)=>
+      // item.id ===id ? itemincrease:item);
+      // SetItems(newupdatedincreaseqnty);
     }
     const RemoveItemFromCartHandler =(item) =>{
      
